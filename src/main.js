@@ -6,6 +6,7 @@ import VueParticles from "vue-particles";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import Vcomp from "./components/index";
+import "@/assets/css/base.scss";
 
 Vue.use(ElementUI);
 Vue.use(VueParticles);
