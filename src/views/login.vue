@@ -5,28 +5,16 @@
         <h2>大数据可视化平台</h2>
         <div class="login-content">
           <div class="login-form">
-            <div class="username underline">
-              <span class="el-icon-user-solid"></span>
-              <el-input
-                class="login-input"
-                placeholder="请输入用户名"
-                v-model="form.username"
-                clearable
-              >
-              </el-input>
-            </div>
-            <div class="password underline">
-              <span class="el-icon-lock"></span>
-              <el-input
-                type="password"
-                class="login-input"
-                placeholder="请输入密码"
-                v-model="form.password"
-                clearable
-              >
-              </el-input>
-            </div>
+            <el-form :model="form" :rules="rules" ref="form">
+              <el-form-item label="" prop="username" class="username underline">
+                <el-input placeholder="请输入用户名" v-model="form.username" clearable autocomplete="off" prefix-icon="el-icon-user-solid"></el-input>
+              </el-form-item>
+              <el-form-item label="" prop="password" class="password underline">
+                <el-input type="password" placeholder="请输入密码" v-model="form.password" clearable autocomplete="off" prefix-icon="el-icon-lock"></el-input>
+              </el-form-item>
+            </el-form>
           </div>
+
           <div class="login-btn">
             <el-button @click="loginIn">立即登录</el-button>
           </div>
@@ -40,24 +28,7 @@
       </div>
     </div>
 
-    <vue-particles
-      color="#6495ED"
-      :particleOpacity="0.7"
-      :particlesNumber="80"
-      shapeType="circle"
-      :particleSize="4"
-      linesColor="#6495ED"
-      :linesWidth="1"
-      :lineLinked="true"
-      :lineOpacity="0.6"
-      :linesDistance="150"
-      :moveSpeed="3"
-      :hoverEffect="true"
-      hoverMode="grab"
-      :clickEffect="true"
-      clickMode="push"
-    >
-    </vue-particles>
+    <vue-particles color="#6495ED" :particleOpacity="0.7" :particlesNumber="80" shapeType="circle" :particleSize="4" linesColor="#6495ED" :linesWidth="1" :lineLinked="true" :lineOpacity="0.6" :linesDistance="150" :moveSpeed="3" :hoverEffect="true" hoverMode="grab" :clickEffect="true" clickMode="push"></vue-particles>
     <bgAnimation />
   </div>
 </template>
@@ -70,20 +41,46 @@ export default {
   data () {
     return {
       form: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
+      },
+      rules: {
+        username: [
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+        ]
       }
 
 
 
     }
   },
+  mounted () {
+
+  },
   methods: {
     loginIn () {//登录
+      console.log(this.form, 'form');
+      this.$refs.form.validate(valid => {
+        if (valid) {
+          if (this.form.username == "admin" && this.form.password == "123456") {
+            this.$router.push({
+              path: '/home'
+            })
+          } else {
+            this.$message.error('账号或密码错误，请重新输入');
 
+          }
+
+
+        }
+      });
     }
 
-  }
+  },
+
 };
 </script>
 <style lang="scss">
@@ -92,6 +89,12 @@ export default {
     background: none;
     border: none;
     color: #d3d7f7;
+  }
+  .el-input__prefix {
+    left: 0;
+  }
+  .el-form-item__content {
+    width: 100%;
   }
 }
 </style>
@@ -138,7 +141,7 @@ export default {
           }
         }
         .login-btn {
-          margin: 20px 0;
+          margin: 25px 0 20px 0;
           .el-button {
             width: 100%;
             border: 1px solid #d3d7f7;
