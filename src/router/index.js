@@ -1,25 +1,34 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [{
-        path: "/login",
-        redirect: "/",
+        path: '/login',
+        redirect: '/',
     },
     {
-        path: "/",
-        name: "login",
+        path: '/',
+        name: 'login',
         component: () =>
-            import ("../views/login.vue"),
+            import ('../views/login.vue'),
         meta: {
-            title: "登录界面",
+            title: '登录界面',
         },
     },
-];
+    {
+        path: '/home',
+        name: 'Home',
+        component: () =>
+            import ('@/views/home.vue'),
+        meta: {
+            title: '首页统计图',
+        },
+    },
+]
 
 const router = new VueRouter({
     routes,
-});
+})
 
-export default router;
+export default router

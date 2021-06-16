@@ -1,9 +1,10 @@
 <!-- 首页 -->
 <template>
-  <div></div>
+  <div class="home-container"></div>
 </template>
 
 <script>
+import { screenSize } from '@/assets/js/utils'
 export default {
   components: {},
 
