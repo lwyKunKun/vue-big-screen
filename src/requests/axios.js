@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs' //引入qs模块，用来序列化post类型的数据
-import resetMessage from '../utils/resetMessage'
+import resetMessage from './resetMessage'
 
 //设置超时时间和跨域是否携带凭证
 axios.defaults.timeout = 30000
@@ -10,7 +10,7 @@ axios.defaults.withCredentials = true
 
 //根据环境变量区分接口默认地址
 const ajax = axios.create({
-    baseURL: process.env.VUE_APP_URL
+    baseURL: process.env.VUE_APP_URL,
 })
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 ajax.defaults.headers.common['Authorization'] = `Bearer ${window.localStorage.getItem('access_token')}`
@@ -22,21 +22,21 @@ axios.defaults.validateStatus = function(status) {
 
 //设置拦截器
 ajax.interceptors.request.use(
-    config => {
+    (config) => {
         if (config.method === 'post') {
             config.data = qs.stringify({
-                ...config.data
+                ...config.data,
             })
         }
         return config
     },
-    err => {
+    (err) => {
         return Promise.reject(err)
     }
 )
 
 ajax.interceptors.response.use(
-    res => {
+    (res) => {
         let flag = true
         let { code, message } = res.data
         if (code === -1) {
@@ -61,7 +61,7 @@ ajax.interceptors.response.use(
         }
         return res.data
     },
-    err => {
+    (err) => {
         return Promise.reject(err)
     }
 )

@@ -1,21 +1,21 @@
-const IS_PROD = ["production", "prod"].includes(process.env.NODE_ENV);
-const { resolve } = require("path");
-const path = require("path");
+const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
+const { resolve } = require('path')
+const path = require('path')
 module.exports = {
-    publicPath: "./",
+    publicPath: './',
     //打包位置
-    outputDir: "dist",
+    outputDir: 'dist',
     // 放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录
-    assetsDir: "static",
+    assetsDir: 'static',
     // 指定生成的 index.html 的输出路径 (相对于 outputDir),也可以是一个绝对路径
-    indexPath: "index.html",
+    indexPath: 'index.html',
     //是否使用模拟接口数据（开发环境使用，生产不使用）
     // Mock: !IS_PROD,
     //关闭Eslink校验
     lintOnSave: false,
     //服务器配置
     devServer: {
-        host: "localhost", // ip
+        host: 'localhost', // ip
         port: 8888, // 端口号
         https: false,
         open: false,
@@ -31,10 +31,10 @@ module.exports = {
             //     secure: false, //如果是http接口，需要配置该参数
             //     pathRewrite: { '^/axios': '' }
             // },
-            "/code": {
-                target: "http://www.wengegeai.xyz:8080",
+            '/api': {
+                target: 'http://apis.juhe.cn',
                 pathRewrite: {
-                    "^/code": "/code",
+                    '^/api': '/api',
                 },
                 changeOrigin: true,
             },
@@ -47,7 +47,7 @@ module.exports = {
     configureWebpack: {
         resolve: {
             alias: {
-                "@": resolve("src"),
+                '@': resolve('src'),
             },
         },
     },
@@ -55,6 +55,6 @@ module.exports = {
     //热更新
     chainWebpack: (config) => {
         // 修复HMR
-        config.resolve.symlinks(true);
+        config.resolve.symlinks(true)
     },
-};
+}
