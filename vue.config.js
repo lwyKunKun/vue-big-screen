@@ -32,7 +32,7 @@ module.exports = {
             //     pathRewrite: { '^/axios': '' }
             // },
             '/api': {
-                target: 'http://apis.juhe.cn',
+                target: 'https://restapi.amap.com',
                 pathRewrite: {
                     '^/api': '/api',
                 },
