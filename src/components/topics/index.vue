@@ -1,6 +1,8 @@
 <!-- 重点关注话题图表 -->
 <template>
-  <div id="main" :style="{ width: '500px', height: '400px' }"></div>
+  <div>
+    <div id="main" :style="{ width: '500px', height: '400px' }"></div>
+  </div>
 </template>
 
 <script>
@@ -15,7 +17,8 @@ export default {
           {
             name: '',
             type: 'pie',
-            radius: ['40%', '70%'],
+            radius: ['30%', '60%'],
+            hoverAnimation: true,
             label: {
               show: true,
               position: 'outside',
@@ -32,14 +35,14 @@ export default {
                 b: {
                   color: '#F79B4D',
                   fontSize: 40,
-                  fontWeight: 700,
-                  marginBottom: '10px'
+                  fontWeight: 50
                 },
                 c: {
                   color: '#3BB8B7',
                   backgroundColor: '#1c4168',
                   fontWeight: 700,
                   fontSize: 20,
+                  padding: 4
                 }
               }
 
@@ -52,13 +55,13 @@ export default {
               }
             },
             labelLine: {
-              normal: {
-                show: true,
-                length: 20,
-                lineStyle: {
-                  color: '#224D7B'
-                }
+
+              show: true,
+              length: 20,
+              lineStyle: {
+                color: '#224D7B'
               }
+
             },
             data: [
               { value: 1048, name: '竞品热点', amount: 3714, percent: '15.75%' },
