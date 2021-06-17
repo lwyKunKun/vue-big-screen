@@ -10,7 +10,7 @@ import titlesTemplate from './title' //标题栏模板
 
 const components = {
     bgAnimation,
-    // topics,
+    topics,
     titlesTemplate,
 }
 

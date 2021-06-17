@@ -9,6 +9,8 @@ import Vcomp from './components/index'
 import '@/assets/css/base.scss'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 
 Vue.use(ElementUI)
 Vue.use(VueParticles)

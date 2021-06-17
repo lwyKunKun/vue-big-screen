@@ -24,7 +24,12 @@
           </div>
         </div>
         <div class="content">
-          <titlesTemplate title="重点关注话题"></titlesTemplate>
+          <div class="cotent-left">
+            <titlesTemplate title="重点关注话题"></titlesTemplate>
+            <topics></topics>
+          </div>
+          <div class="map"></div>
+          <div class="cotent-right"></div>
         </div>
       </div>
     </div>
@@ -178,6 +183,9 @@ export default {
             }
           }
         }
+      }
+      .content {
+        display: flex;
       }
     }
   }
