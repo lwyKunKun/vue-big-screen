@@ -8,6 +8,7 @@
 #app {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-user-select: none;

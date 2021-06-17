@@ -2,19 +2,29 @@
 <template>
   <div class="home-container">
     <div class="wrap" ref="wrap">
-      <div class="top">
-        <div class="logo">
-          <img src="../assets/img/logo.jpeg" alt="" />
-        </div>
-        <div class="top-middle">
-          <div class="top-middle-box" v-for="(item, index) in addDivide" :key="index">
-            <div class="title">{{ item.key }}</div>
-            <div :style="{ color: item.color }" class="count">{{ item.newValue }}</div>
+      <div class="all-content">
+        <div class="top">
+          <div class="logo">
+            <img src="../assets/img/logo.jpeg" alt="" />
+          </div>
+          <div class="top-middle">
+            <div class="top-middle-box" v-for="(item, index) in addDivide" :key="index">
+              <div class="title">{{ item.key }}</div>
+              <div :style="{ color: item.color }" class="count">{{ item.newValue }}</div>
+            </div>
+          </div>
+          <div class="top-right">
+            <div class="time">{{ time }}</div>
+            <div class="weather">
+              <span>{{ weatherInfo.city }}</span>
+              <span>{{ weatherInfo.newTemperature }}</span>
+              <span>{{ weatherInfo.windpower }}</span>
+              <span>{{ weatherInfo.weather }}</span>
+            </div>
           </div>
         </div>
-        <div class="top-right">
-          <div class="time">{{ time }}</div>
-          <div class="weather"></div>
+        <div class="content">
+          <titlesTemplate title="重点关注话题"></titlesTemplate>
         </div>
       </div>
     </div>
@@ -24,7 +34,6 @@
 <script>
 import { screenSize, nowTime } from '@/assets/js/utils'
 import { getWeather } from '@/api/home'
-import jsonp from 'jsonp'
 export default {
   name: 'home',
   components: {},
@@ -54,6 +63,7 @@ export default {
       ],
       time: '',//当前时间
       timer: '',  // 定时器名称
+      weatherInfo: [],//天气信息
     };
   },
   created () {
@@ -83,12 +93,15 @@ export default {
     },
   },
   methods: {
-    getWeather () {
+    getWeather () {//获取气温
       const parmas = {
         city: "成都",
       }
       getWeather(parmas).then((res, err) => {
-        console.log(res, 'res');
+        this.weatherInfo = {
+          ...res.lives[0],
+          newTemperature: `${res.lives[0].temperature}°`
+        }
 
 
       })
@@ -101,6 +114,8 @@ export default {
 .home-container {
   width: 100%;
   height: 100%;
+  color: #fff;
+  box-sizing: border-box;
   .wrap {
     transform-origin: 0px 0px 0px;
     background-size: contain;
@@ -111,43 +126,58 @@ export default {
     min-height: auto;
     height: 1080px;
     overflow: auto;
-    .top {
-      display: flex;
-      .logo {
-        width: 400px;
-        height: auto;
-        img {
-          width: auto;
-          height: auto;
-          max-width: 100%;
-          max-height: 100%;
-        }
-      }
-      .top-middle {
+    .all-content {
+      padding: 20px 35px;
+      background-color: #0c1c35;
+      .top {
         display: flex;
-        color: #fff;
-        margin: 40px auto;
-        .top-middle-box {
-          margin-left: 30px;
-          &:first-child {
-            margin-left: 0px;
+        .logo {
+          width: 450px;
+          height: auto;
+          img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
           }
         }
-        .title {
-          color: #b2c0db;
-          font-size: 25px;
+        .top-middle {
+          display: flex;
+          color: #fff;
+          margin: 40px auto;
+          .top-middle-box {
+            margin-left: 30px;
+            &:first-child {
+              margin-left: 0px;
+            }
+          }
+          .title {
+            color: #b2c0db;
+            font-size: 25px;
+          }
+          .count {
+            font-size: 70px;
+            font-weight: 700;
+            margin-top: -20px;
+          }
         }
-        .count {
-          font-size: 70px;
+        .top-right {
+          color: #fff;
           font-weight: 700;
-          margin-top: -20px;
+          font-size: 40px;
+          margin: 20px 0 0 auto;
+          .weather {
+            font-size: 30px;
+            text-align: right;
+            span {
+              margin-left: 10px;
+              &:last-child {
+                font-size: 15px;
+                margin-left: 5px;
+              }
+            }
+          }
         }
-      }
-      .top-right {
-        color: #fff;
-        font-weight: 700;
-        font-size: 40px;
-        margin: 20px 20px 0 auto;
       }
     }
   }
