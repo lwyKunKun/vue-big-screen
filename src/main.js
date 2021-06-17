@@ -10,6 +10,7 @@ import '@/assets/css/base.scss'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import echarts from 'echarts'
+import '@/assets/css/home.scss'
 Vue.prototype.$echarts = echarts
 
 Vue.use(ElementUI)

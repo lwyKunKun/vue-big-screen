@@ -60,6 +60,7 @@ export default {
   border-radius: 3px;
   box-sizing: border-box;
   text-shadow: 2px 2px 2px grey;
+  margin-top: 15px;
 }
 .tabTitle {
   display: flex;

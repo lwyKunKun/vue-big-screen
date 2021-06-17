@@ -27,6 +27,8 @@
           <div class="cotent-left">
             <titlesTemplate title="重点关注话题"></titlesTemplate>
             <topics></topics>
+            <titlesTemplate title="媒体曝光分布"></titlesTemplate>
+            <media></media>
           </div>
           <div class="map"></div>
           <div class="cotent-right"></div>

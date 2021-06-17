@@ -1,0 +1,41 @@
+.chartBox {
+    margin-top: 10px;
+    border: 3px solid #2b4d7e;
+    position: relative;
+    span:nth-child(1) {
+        position: absolute;
+        left: -3px;
+        top: -3px;
+        padding: 15px;
+        border-style: solid;
+        border-color: #6eabd2;
+        border-width: 3px 0 0 3px;
+    }
+    span:nth-child(2) {
+        position: absolute;
+        right: -3px;
+        top: -3px;
+        padding: 15px;
+        border-style: solid;
+        border-color: #6eabd2;
+        border-width: 3px 3px 0 0;
+    }
+    span:nth-child(3) {
+        position: absolute;
+        right: -3px;
+        bottom: -3px;
+        padding: 15px;
+        border-style: solid;
+        border-color: #6eabd2;
+        border-width: 0 3px 3px 0;
+    }
+    span:nth-child(4) {
+        position: absolute;
+        left: -3px;
+        bottom: -3px;
+        padding: 15px;
+        border-style: solid;
+        border-color: #6eabd2;
+        border-width: 0 0 3px 3px;
+    }
+}

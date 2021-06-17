@@ -1,11 +1,16 @@
 <!-- 重点关注话题图表 -->
 <template>
-  <div>
+  <div class="chartBox">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
     <div id="main" :style="{ width: '500px', height: '400px' }"></div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'topics',
   components: {},
@@ -19,6 +24,7 @@ export default {
             type: 'pie',
             radius: ['30%', '60%'],
             hoverAnimation: true,
+            avoidLabelOverlap: true,//解决标签重叠的问题
             label: {
               show: true,
               position: 'outside',
@@ -35,7 +41,7 @@ export default {
                 b: {
                   color: '#F79B4D',
                   fontSize: 40,
-                  fontWeight: 50
+                  fontWeight: 50,
                 },
                 c: {
                   color: '#3BB8B7',
@@ -49,7 +55,7 @@ export default {
             },
             emphasis: {
               label: {
-                show: false,
+                show: true,
                 fontSize: '10',
                 fontWeight: 'bold'
               }
@@ -93,5 +99,7 @@ export default {
 }
 
 </script>
+
+
 <style lang='scss' scoped>
 </style>

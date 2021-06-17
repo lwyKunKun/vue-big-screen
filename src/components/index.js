@@ -7,11 +7,13 @@
 import bgAnimation from './bgAnimation' // 登录界面背景图动画
 import topics from './topics' //重点关注话题
 import titlesTemplate from './title' //标题栏模板
+import media from './media' //媒体曝光分布
 
 const components = {
     bgAnimation,
     topics,
     titlesTemplate,
+    media,
 }
 
 const install = (Vue = {}) => {
