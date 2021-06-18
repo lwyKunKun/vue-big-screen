@@ -5,15 +5,17 @@
  */
 
 import bgAnimation from './bgAnimation' // 登录界面背景图动画
-import topics from './topics' //重点关注话题
+import topics from './topics' //重点关注话题图表
 import titlesTemplate from './title' //标题栏模板
-import media from './media' //媒体曝光分布
+import media from './media' //媒体曝光分布图表
+import exponent from './exponent' //指数图表
 
 const components = {
     bgAnimation,
     topics,
     titlesTemplate,
     media,
+    exponent,
 }
 
 const install = (Vue = {}) => {

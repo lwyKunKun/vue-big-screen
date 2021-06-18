@@ -4,6 +4,7 @@
     <span></span>
     <span></span>
     <span></span>
+    <span></span>
     <div id="myChart" :style="{ width: '500px', height: '400px' }"></div>
   </div>
 </template>
@@ -21,6 +22,8 @@ export default {
           show: true,
           right: 10,
           bottom: 0,
+          itemWidth: 25,
+          itemHeight: 5,
           orient: 'vertical',
           data: [{ name: '网络媒体' }, '社交媒体', '传统媒体']
         },
@@ -114,7 +117,4 @@ export default {
 
 </script>
 <style lang='scss' scoped>
-.lwy {
-  color: transparent;
-}
 </style>

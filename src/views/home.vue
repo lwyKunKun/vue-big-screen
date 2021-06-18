@@ -30,8 +30,11 @@
             <titlesTemplate title="媒体曝光分布"></titlesTemplate>
             <media></media>
           </div>
-          <div class="map"></div>
-          <div class="cotent-right"></div>
+          <div class="map">这是中间地图</div>
+          <div class="cotent-right">
+            <titlesTemplate title="微信指数" :isTabBtn="true" :tabNameList="tabNameList"></titlesTemplate>
+            <exponent></exponent>
+          </div>
         </div>
       </div>
     </div>
@@ -71,6 +74,7 @@ export default {
       time: '',//当前时间
       timer: '',  // 定时器名称
       weatherInfo: [],//天气信息
+      tabNameList: ['微博指数', '微信指数', '百度指数'],//标题tab列表
     };
   },
   created () {
@@ -131,7 +135,7 @@ export default {
     min-width: auto;
     width: 1920px;
     min-height: auto;
-    height: 1080px;
+    height: 100%;
     overflow: auto;
     .all-content {
       padding: 20px 35px;
@@ -188,6 +192,12 @@ export default {
       }
       .content {
         display: flex;
+        .map {
+          flex: 1;
+        }
+        .cotent-right {
+          margin-left: auto;
+        }
       }
     }
   }

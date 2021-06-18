@@ -1,0 +1,169 @@
+<!-- 指数图表 -->
+<template>
+  <div class="chartBox">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <div id="lineChart" :style="{ width: '500px', height: '400px' }"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'exponent',
+  components: {},
+
+  data () {
+    return {
+      option: {
+        legend: {
+          show: true,
+          data: ['中国平安', '中国人寿', '招商银行', '中国人保', '中信'],
+          icon: 'Rect',
+          itemWidth: 25,
+          itemHeight: 5,
+          color: ['#73B7FF', '7CE7FF', '15D8A1', 'DFEA1C', 'EE944D'],
+          textStyle: {
+            color: '#fff'
+          }
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '7%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          splitLine: {
+            show: false
+          },
+          data: ['09/10', '09/12', '09/14', '09/16', '09/18', '09/20', '09/22', '09/24'],
+          axisLabel: {
+            textStyle: {
+              color: '#fff'
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              type: 'solid',
+              color: '#fff',//左边线的颜色
+              width: '1'//坐标线的宽度
+            }
+          },
+        },
+        yAxis: {
+          type: 'value',
+          min: 10000,
+          max: 60000,
+          splitLine: {
+            show: false
+          },
+          axisLine: {
+            lineStyle: {
+              type: 'solid',
+              color: '#fff',//左边线的颜色
+              width: '1'//坐标线的宽度
+            }
+          },
+          axisLabel: {
+            textStyle: {
+              color: '#fff'
+            },
+
+            formatter: (value, index) => {
+              if (value >= 10000) {
+                value = (Math.round(value / 100) / 10).toFixed(1) + 'k';
+              }
+              return value;
+
+
+
+            }
+
+          },
+
+
+        },
+        series: [
+          {
+            name: '中国平安',
+            type: 'line',
+            symbol: 'circle',//设定为实心点
+            symbolSize: 7,//设定实心点的大小
+            smooth: true,// 这个可以显示为平滑过渡的线条
+            data: [12000, 13200, 10100, 13400, 59000, 23000, 21000],
+            lineStyle: {
+              width: 3,
+            }
+          },
+          {
+            name: '中国人寿',
+            type: 'line',
+            data: [22000, 18200, 19100, 23400, 29000, 33000, 31000],
+            symbol: 'circle',//设定为实心点
+            symbolSize: 7,   //设定实心点的大小
+            smooth: true,// 这个可以显示为平滑过渡的线条
+            lineStyle: {
+              width: 3
+            }
+          },
+          {
+            name: '招商银行',
+            type: 'line',
+            data: [15000, 23200, 20100, 15400, 19000, 33000, 41000],
+            symbol: 'circle',//设定为实心点
+            symbolSize: 7,   //设定实心点的大小
+            smooth: true,// 这个可以显示为平滑过渡的线条
+            lineStyle: {
+              width: 3
+            }
+          },
+          {
+            name: '中国人保',
+            type: 'line',
+            data: [32000, 33200, 30100, 33400, 39000, 33000, 32000],
+            symbol: 'circle',//设定为实心点
+            symbolSize: 7,   //设定实心点的大小
+            smooth: true,// 这个可以显示为平滑过渡的线条
+            lineStyle: {
+              width: 3
+            }
+          },
+          {
+            name: '中信',
+            type: 'line',
+            data: [58200, 49320, 39010, 29340, 12900, 13300, 13200],
+            symbol: 'circle',//设定为实心点
+            symbolSize: 7,   //设定实心点的大小
+            smooth: true,// 这个可以显示为平滑过渡的线条
+            lineStyle: {
+              width: 3
+            }
+          }
+        ]
+      }
+    };
+  },
+
+  mounted () {
+    this.getlineChart()
+  },
+
+  computed: {},
+
+  methods: {
+    //绘制折线图
+    getlineChart () {
+      let myChart = this.$echarts.init(document.getElementById('lineChart'))
+      window.onresize = myChart.resize;
+      myChart.setOption(this.option)
+    }
+  }
+}
+
+</script>
+<style lang='scss' scoped>
+</style>
