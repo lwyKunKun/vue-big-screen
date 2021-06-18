@@ -9,6 +9,7 @@ import topics from './topics' //重点关注话题图表
 import titlesTemplate from './title' //标题栏模板
 import media from './media' //媒体曝光分布图表
 import exponent from './exponent' //指数图表
+import business from './business' //业务板块舆情
 
 const components = {
     bgAnimation,
@@ -16,6 +17,7 @@ const components = {
     titlesTemplate,
     media,
     exponent,
+    business,
 }
 
 const install = (Vue = {}) => {

@@ -17,13 +17,13 @@ export default {
   data () {
     return {
       option: {
+        color: ['#4FBBFC', '#58E2EF', '#05D79A', '#D2E12E', '#E49E48'],
         legend: {
           show: true,
           data: ['中国平安', '中国人寿', '招商银行', '中国人保', '中信'],
           icon: 'Rect',
           itemWidth: 25,
           itemHeight: 5,
-          color: ['#73B7FF', '7CE7FF', '15D8A1', 'DFEA1C', 'EE944D'],
           textStyle: {
             color: '#fff'
           }
@@ -37,7 +37,7 @@ export default {
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          splitLine: {
+          splitLine: {//去除网格线
             show: false
           },
           data: ['09/10', '09/12', '09/14', '09/16', '09/18', '09/20', '09/22', '09/24'],
@@ -53,10 +53,13 @@ export default {
               width: '1'//坐标线的宽度
             }
           },
+          axisTick: {//刻度线朝上
+            inside: true
+          },
         },
         yAxis: {
           type: 'value',
-          min: 10000,
+          min: 0,
           max: 60000,
           splitLine: {
             show: false
@@ -72,7 +75,6 @@ export default {
             textStyle: {
               color: '#fff'
             },
-
             formatter: (value, index) => {
               if (value >= 10000) {
                 value = (Math.round(value / 100) / 10).toFixed(1) + 'k';
@@ -82,7 +84,6 @@ export default {
 
 
             }
-
           },
 
 
@@ -102,7 +103,7 @@ export default {
           {
             name: '中国人寿',
             type: 'line',
-            data: [22000, 18200, 19100, 23400, 29000, 33000, 31000],
+            data: [22000, 18200, 19100, 23400, 9000, 33000, 31000],
             symbol: 'circle',//设定为实心点
             symbolSize: 7,   //设定实心点的大小
             smooth: true,// 这个可以显示为平滑过渡的线条
@@ -135,7 +136,7 @@ export default {
           {
             name: '中信',
             type: 'line',
-            data: [58200, 49320, 39010, 29340, 12900, 13300, 13200],
+            data: [8200, 9320, 9010, 29340, 12900, 13300, 13200],
             symbol: 'circle',//设定为实心点
             symbolSize: 7,   //设定实心点的大小
             smooth: true,// 这个可以显示为平滑过渡的线条

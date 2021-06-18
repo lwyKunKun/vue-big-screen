@@ -25,6 +25,9 @@ export default {
           itemWidth: 25,
           itemHeight: 5,
           orient: 'vertical',
+          textStyle: {
+            color: '#fff'
+          },
           data: [{ name: '网络媒体' }, '社交媒体', '传统媒体']
         },
         radar: {

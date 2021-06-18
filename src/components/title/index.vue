@@ -4,7 +4,7 @@
     <div class="title tabTitle" v-if="isTabBtn">
       {{ title }}
       <div class="tabs">
-        <div class="tab" v-for="(item, index) in tabNameList" :key="index">{{ item }}</div>
+        <div class="tab" v-for="(item, index) in tabNameList" :key="index" @mouseover="mouseOver(index)">{{ item }}</div>
       </div>
     </div>
     <div class="title" v-else>{{ title }}</div>
@@ -43,7 +43,12 @@ export default {
 
   computed: {},
 
-  methods: {}
+  methods: {
+    mouseOver (index) {//鼠标移入事件
+      this.$emit('mouseOver', index)
+
+    }
+  }
 }
 
 </script>
@@ -94,7 +99,7 @@ export default {
       display: block;
       position: absolute;
       left: 50%;
-      top: 115%;
+      top: 112%;
       transform: translate(-50%, -50%);
       z-index: 5;
       /*兼容ie8-*/

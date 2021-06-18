@@ -32,8 +32,10 @@
           </div>
           <div class="map">这是中间地图</div>
           <div class="cotent-right">
-            <titlesTemplate title="微信指数" :isTabBtn="true" :tabNameList="tabNameList"></titlesTemplate>
+            <titlesTemplate title="指数" :isTabBtn="true" :tabNameList="tabNameList" @mouseOver="mouseOver"></titlesTemplate>
             <exponent></exponent>
+            <titlesTemplate title="业务板块舆情"></titlesTemplate>
+            <business></business>
           </div>
         </div>
       </div>
@@ -117,6 +119,10 @@ export default {
 
       })
     },
+    mouseOver (index) {//指数移入事件
+      console.log(index, 'index');
+
+    }
 
   }
 }
