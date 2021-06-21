@@ -21,18 +21,22 @@ export default {
         legend: {
           data: ['正面', '负面'],
           icon: 'Rect',
-          itemHeight: 12,
-          itemWidth: 12,
+          itemHeight: 14,
+          itemWidth: 14,
           left: '70%',
-          orient: 'horizontal',
+          orient: 'horizontal',//水平布局
+          itemGap: 20,
+          padding: [30, 10, 0, 0],    // [5, 10, 15, 20]
           textStyle: {
-            color: '#fff'
+            color: '#fff',
+            fontSize: 16,
+            fontWeight: 700
           }
 
         },
         grid: {
           left: '3%',
-          bottom: '3%',
+          bottom: '10%',
           containLabel: true,//设置自适应画布大小状态为开，也可通过设置left左移实现相同效果。
         },
         xAxis: {
@@ -65,6 +69,7 @@ export default {
               color: '#fff'
             },
             fontSize: 20,
+            fontWeight: 700,
           },
           axisLine: {
             show: false,
