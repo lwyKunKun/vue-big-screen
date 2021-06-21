@@ -53,8 +53,8 @@ export default {
           },
           axisLine: {
             lineStyle: {
+              width: this.$fontSize(0.01),//坐标线的宽度
               color: '#fff',
-              join: 'miter'
             },
           },
           axisTick: {//刻度线朝上
@@ -121,19 +121,23 @@ export default {
         ]
 
       },
-      myChart: ''
+      chart: ''
 
     };
   },
 
   mounted () {
     this.getBarChart()
+    this.resize(this.chart)
+
   },
   activated () {
     this.getBarChart()
+    this.resize(this.chart)
   },
   deactivated () {
     this.getBarChart()
+    this.resize(this.chart)
 
   },
 
@@ -143,17 +147,31 @@ export default {
   methods: {
     //绘制条形图
     getBarChart () {
-      this.myChart = this.$echarts.init(document.getElementById('business'))
-      this.resize(this.myChart)
-      this.myChart.setOption(this.option)
+      let myChart = this.$echarts.init(document.getElementById('business'))
+      this.chart = myChart
+      myChart.setOption(this.option)
+
     },
     //监听
     resize (option) {
-      window.addEventListener('resize', function () {
-        this.myChart = this.$echarts.init(document.getElementById('business'));
-        this.myChart.setOption(this.option)
+      const that = this;
+      window.addEventListener('resize', () => {
+        this.getBarChart();
         option.resize();
+        // option.clear();
       })
+
+    },
+    debounce (fn, delay) {
+      let timer = null;
+      return () => {
+        if (timer) {
+          clearTimeout(timer)
+        }
+        timer = setTimeout(() => {
+          fn()
+        }, delay)
+      }
 
     }
   }

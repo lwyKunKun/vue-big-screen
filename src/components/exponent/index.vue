@@ -5,7 +5,7 @@
     <span></span>
     <span></span>
     <span></span>
-    <div id="lineChart" :style="{ width: '500px', height: '400px' }"></div>
+    <div id="lineChart" class="chartSize"></div>
   </div>
 </template>
 
@@ -22,10 +22,11 @@ export default {
           show: true,
           data: ['中国平安', '中国人寿', '招商银行', '中国人保', '中信'],
           icon: 'Rect',
-          itemWidth: 25,
-          itemHeight: 5,
+          itemWidth: this.$fontSize(0.25),
+          itemHeight: this.$fontSize(0.05),
           textStyle: {
-            color: '#fff'
+            color: '#fff',
+            fontSize: this.$fontSize(0.12)
           }
         },
         grid: {
@@ -43,14 +44,15 @@ export default {
           data: ['09/10', '09/12', '09/14', '09/16', '09/18', '09/20', '09/22', '09/24'],
           axisLabel: {
             textStyle: {
-              color: '#fff'
+              color: '#fff',
+              fontSize: this.$fontSize(0.14)
             }
           },
           axisLine: {
             lineStyle: {
               type: 'solid',
               color: '#fff',//左边线的颜色
-              width: '1'//坐标线的宽度
+              width: this.$fontSize(0.01)//坐标线的宽度
             }
           },
           axisTick: {//刻度线朝上
@@ -68,12 +70,13 @@ export default {
             lineStyle: {
               type: 'solid',
               color: '#fff',//左边线的颜色
-              width: '1'//坐标线的宽度
+              width: this.$fontSize(0.01)//坐标线的宽度
             }
           },
           axisLabel: {
             textStyle: {
-              color: '#fff'
+              color: '#fff',
+              fontSize: this.$fontSize(0.14)
             },
             formatter: (value, index) => {
               if (value >= 10000) {
@@ -93,11 +96,11 @@ export default {
             name: '中国平安',
             type: 'line',
             symbol: 'circle',//设定为实心点
-            symbolSize: 7,//设定实心点的大小
+            symbolSize: this.$fontSize(0.07),//设定实心点的大小
             smooth: true,// 这个可以显示为平滑过渡的线条
             data: [12000, 13200, 10100, 13400, 59000, 23000, 21000],
             lineStyle: {
-              width: 3,
+              width: this.$fontSize(0.03),
             }
           },
           {
@@ -105,10 +108,10 @@ export default {
             type: 'line',
             data: [22000, 18200, 19100, 23400, 9000, 33000, 31000],
             symbol: 'circle',//设定为实心点
-            symbolSize: 7,   //设定实心点的大小
+            symbolSize: this.$fontSize(0.07),   //设定实心点的大小
             smooth: true,// 这个可以显示为平滑过渡的线条
             lineStyle: {
-              width: 3
+              width: this.$fontSize(0.03),
             }
           },
           {
@@ -116,10 +119,10 @@ export default {
             type: 'line',
             data: [15000, 23200, 20100, 15400, 19000, 33000, 41000],
             symbol: 'circle',//设定为实心点
-            symbolSize: 7,   //设定实心点的大小
+            symbolSize: this.$fontSize(0.07),   //设定实心点的大小
             smooth: true,// 这个可以显示为平滑过渡的线条
             lineStyle: {
-              width: 3
+              width: this.$fontSize(0.03)
             }
           },
           {
@@ -127,10 +130,10 @@ export default {
             type: 'line',
             data: [32000, 33200, 30100, 33400, 39000, 33000, 32000],
             symbol: 'circle',//设定为实心点
-            symbolSize: 7,   //设定实心点的大小
+            symbolSize: this.$fontSize(0.07),   //设定实心点的大小
             smooth: true,// 这个可以显示为平滑过渡的线条
             lineStyle: {
-              width: 3
+              width: this.$fontSize(0.03)
             }
           },
           {
@@ -138,10 +141,10 @@ export default {
             type: 'line',
             data: [8200, 9320, 9010, 29340, 12900, 13300, 13200],
             symbol: 'circle',//设定为实心点
-            symbolSize: 7,   //设定实心点的大小
+            symbolSize: this.$fontSize(0.07),   //设定实心点的大小
             smooth: true,// 这个可以显示为平滑过渡的线条
             lineStyle: {
-              width: 3
+              width: this.$fontSize(0.03)
             }
           }
         ]
@@ -151,6 +154,13 @@ export default {
 
   mounted () {
     this.getlineChart()
+  },
+  activated () {
+    this.getlineChart()
+  },
+  deactivated () {
+    this.getlineChart()
+
   },
 
   computed: {},

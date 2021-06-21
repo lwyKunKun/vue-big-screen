@@ -5,7 +5,7 @@
     <span></span>
     <span></span>
     <span></span>
-    <div id="myChart" :style="{ width: '500px', height: '400px' }"></div>
+    <div id="myChart" class="chartSize"></div>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
         color: ['#60B8F1', '#5AE8F6', '#28D49F'],
         legend: {
           show: true,
-          right: 10,
+          right: '1%',
           bottom: 0,
           itemWidth: 25,
           itemHeight: 5,
@@ -105,6 +105,13 @@ export default {
   mounted () {
     this.getRadar()
   },
+  activated () {
+    this.getRadar()
+  },
+  deactivated () {
+    this.getRadar()
+
+  },
 
   computed: {},
 
@@ -112,8 +119,16 @@ export default {
     //绘制雷达图
     getRadar () {
       let myChart = this.$echarts.init(document.getElementById('myChart'))
-      window.onresize = myChart.resize;
+
       myChart.setOption(this.option)
+    },
+    //监听
+    resize (option) {
+      const that = this;
+      window.addEventListener('resize', () => {
+        option.resize();
+        that.getRadar();
+      })
     }
   }
 }
