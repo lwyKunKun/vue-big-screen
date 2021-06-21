@@ -5,7 +5,7 @@
     <span></span>
     <span></span>
     <span></span>
-    <div id="business" :style="{ width: '500px', height: '400px' }"></div>
+    <div id="business" class="chartSize"></div>
   </div>
 </template>
 
@@ -21,15 +21,15 @@ export default {
         legend: {
           data: ['正面', '负面'],
           icon: 'Rect',
-          itemHeight: 14,
-          itemWidth: 14,
+          itemHeight: this.$fontSize(0.14),
+          itemWidth: this.$fontSize(0.14),
           left: '70%',
           orient: 'horizontal',//水平布局
-          itemGap: 20,
+          itemGap: this.$fontSize(0.2),
           padding: [30, 10, 0, 0],    // [5, 10, 15, 20]
           textStyle: {
             color: '#fff',
-            fontSize: 16,
+            fontSize: this.$fontSize(0.16),
             fontWeight: 700
           }
 
@@ -47,7 +47,8 @@ export default {
           },
           axisLabel: {
             textStyle: {
-              color: '#fff'
+              color: '#fff',
+              fontSize: this.$fontSize(0.16),
             }
           },
           axisLine: {
@@ -57,10 +58,9 @@ export default {
             },
           },
           axisTick: {//刻度线朝上
-            inside: true
+            inside: true,
+            width: this.$fontSize(0.4)
           },
-          //   min: -500,
-          //   max: 3000
         },
         yAxis: {
           type: 'category',
@@ -68,14 +68,13 @@ export default {
             textStyle: {
               color: '#fff'
             },
-            fontSize: 20,
+            fontSize: this.$fontSize(0.2),
             fontWeight: 700,
           },
           axisLine: {
             show: false,
 
           },
-          boundaryGap: [0.1, 0.1],
           data: ['集团', '保险', '投资', '银行']
         },
         series: [
@@ -90,7 +89,7 @@ export default {
               show: true,
               position: 'left',
               fontWeight: 'bolder',
-              fontSize: 20,
+              fontSize: this.$fontSize(0.2),
               formatter: (data) => {
                 return (Math.abs(data.data)).toLocaleString('en-US')
               },
@@ -111,7 +110,7 @@ export default {
               show: true,
               position: 'right',
               fontWeight: 'bolder',
-              fontSize: 20,
+              fontSize: this.$fontSize(0.2),
               formatter: (data) => {
                 return data.data.toLocaleString('en-US')
 
@@ -121,22 +120,41 @@ export default {
 
         ]
 
-      }
+      },
+      myChart: ''
+
     };
   },
 
   mounted () {
     this.getBarChart()
   },
+  activated () {
+    this.getBarChart()
+  },
+  deactivated () {
+    this.getBarChart()
+
+  },
+
 
   computed: {},
 
   methods: {
     //绘制条形图
     getBarChart () {
-      let myChart = this.$echarts.init(document.getElementById('business'))
-      window.onresize = myChart.resize;
-      myChart.setOption(this.option)
+      this.myChart = this.$echarts.init(document.getElementById('business'))
+      this.resize(this.myChart)
+      this.myChart.setOption(this.option)
+    },
+    //监听
+    resize (option) {
+      window.addEventListener('resize', function () {
+        this.myChart = this.$echarts.init(document.getElementById('business'));
+        this.myChart.setOption(this.option)
+        option.resize();
+      })
+
     }
   }
 }

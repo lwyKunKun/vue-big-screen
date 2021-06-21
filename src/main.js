@@ -13,7 +13,9 @@ import echarts from 'echarts'
 import '@/assets/css/home.scss'
 
 import '@/assets/js/flexible.js' //大屏适配js
+import { fontSize } from '@/assets/js/font.js' //字体大小适配
 Vue.prototype.$echarts = echarts
+Vue.prototype.$fontSize = fontSize
 
 Vue.use(ElementUI)
 Vue.use(VueParticles)

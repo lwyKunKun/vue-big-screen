@@ -150,7 +150,7 @@ export default {
     .top {
       display: flex;
       .logo {
-        width: 450px;
+        width: 250px;
         height: auto;
         img {
           width: auto;
