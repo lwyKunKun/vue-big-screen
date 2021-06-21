@@ -10,13 +10,43 @@
 </template>
 
 <script>
+import { resize } from '@/assets/js/utils'
 export default {
   name: 'business',
   components: {},
 
   data () {
     return {
-      option: {
+      chart: ''
+
+    };
+  },
+
+  mounted () {
+    this.init()
+    resize(this.init, this.chart);
+
+  },
+  activated () {
+    this.init()
+    resize(this.init, this.chart);
+
+  },
+  deactivated () {
+    this.init()
+    resize(this.init, this.chart);
+
+  },
+
+
+  computed: {},
+
+  methods: {
+    //绘制条形图
+    init () {
+      let myChart = this.$echarts.init(document.getElementById('business'))
+      this.chart = myChart;
+      let option = {
         color: ['#DC944A', '#4FBEFD'],
         legend: {
           data: ['正面', '负面'],
@@ -120,60 +150,10 @@ export default {
 
         ]
 
-      },
-      chart: ''
-
-    };
-  },
-
-  mounted () {
-    this.getBarChart()
-    this.resize(this.chart)
-
-  },
-  activated () {
-    this.getBarChart()
-    this.resize(this.chart)
-  },
-  deactivated () {
-    this.getBarChart()
-    this.resize(this.chart)
-
-  },
-
-
-  computed: {},
-
-  methods: {
-    //绘制条形图
-    getBarChart () {
-      let myChart = this.$echarts.init(document.getElementById('business'))
-      this.chart = myChart
-      myChart.setOption(this.option)
-
-    },
-    //监听
-    resize (option) {
-      const that = this;
-      window.addEventListener('resize', () => {
-        this.getBarChart();
-        option.resize();
-        // option.clear();
-      })
-
-    },
-    debounce (fn, delay) {
-      let timer = null;
-      return () => {
-        if (timer) {
-          clearTimeout(timer)
-        }
-        timer = setTimeout(() => {
-          fn()
-        }, delay)
       }
+      myChart.setOption(option)
 
-    }
+    },
   }
 }
 

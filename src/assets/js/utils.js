@@ -8,3 +8,11 @@ export function nowTime() {
     let _second = 10 > now.getSeconds() ? '0' + now.getSeconds() : now.getSeconds()
     return now.getFullYear() + '-' + _month + '-' + _day + ' ' + _hour + ':' + _minute + ':' + _second
 }
+
+//监听浏览器当前窗口是否改变
+export const resize = (init, dom) => {
+    window.addEventListener('resize', () => {
+        init()
+        dom.resize()
+    })
+}

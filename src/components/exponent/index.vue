@@ -10,13 +10,39 @@
 </template>
 
 <script>
+import { resize } from '@/assets/js/utils'
 export default {
   name: 'exponent',
   components: {},
 
   data () {
     return {
-      option: {
+      chart: '',
+    };
+  },
+
+  mounted () {
+    this.init()
+    resize(this.init, this.chart);
+  },
+  activated () {
+    this.init()
+    resize(this.init, this.chart);
+  },
+  deactivated () {
+    this.init()
+    resize(this.init, this.chart);
+
+  },
+
+  computed: {},
+
+  methods: {
+    //绘制折线图
+    init () {
+      let myChart = this.$echarts.init(document.getElementById('lineChart'))
+      this.chart = myChart;
+      let option = {
         color: ['#4FBBFC', '#58E2EF', '#05D79A', '#D2E12E', '#E49E48'],
         legend: {
           show: true,
@@ -149,28 +175,7 @@ export default {
           }
         ]
       }
-    };
-  },
-
-  mounted () {
-    this.getlineChart()
-  },
-  activated () {
-    this.getlineChart()
-  },
-  deactivated () {
-    this.getlineChart()
-
-  },
-
-  computed: {},
-
-  methods: {
-    //绘制折线图
-    getlineChart () {
-      let myChart = this.$echarts.init(document.getElementById('lineChart'))
-      window.onresize = myChart.resize;
-      myChart.setOption(this.option)
+      myChart.setOption(option)
     }
   }
 }
