@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { screenSize, nowTime } from '@/assets/js/utils'
+import { nowTime } from '@/assets/js/utils'
 import { getWeather } from '@/api/home'
 export default {
   name: 'home',
@@ -92,7 +92,6 @@ export default {
 
   },
   mounted () {
-    screenSize(this.$refs.wrap);
 
   },
   computed: {
@@ -133,6 +132,7 @@ export default {
   height: 100%;
   color: #fff;
   box-sizing: border-box;
+
   .wrap {
     transform-origin: 0px 0px 0px;
     background-size: contain;
@@ -141,69 +141,69 @@ export default {
     min-width: auto;
     width: 1920px;
     min-height: auto;
-    height: 100%;
-    overflow: auto;
-    .all-content {
-      padding: 20px 35px;
-      background-color: #0c1c35;
-      .top {
-        display: flex;
-        .logo {
-          width: 450px;
+    height: 1080px;
+    overflow-y: auto;
+  }
+  .all-content {
+    padding: 20px 35px;
+    background-color: #0c1c35;
+    .top {
+      display: flex;
+      .logo {
+        width: 450px;
+        height: auto;
+        img {
+          width: auto;
           height: auto;
-          img {
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            max-height: 100%;
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+      .top-middle {
+        display: flex;
+        color: #fff;
+        margin: 40px auto;
+        .top-middle-box {
+          margin-left: 30px;
+          &:first-child {
+            margin-left: 0px;
           }
         }
-        .top-middle {
-          display: flex;
-          color: #fff;
-          margin: 40px auto;
-          .top-middle-box {
-            margin-left: 30px;
-            &:first-child {
-              margin-left: 0px;
-            }
-          }
-          .title {
-            color: #b2c0db;
-            font-size: 25px;
-          }
-          .count {
-            font-size: 70px;
-            font-weight: 700;
-            margin-top: -20px;
-          }
+        .title {
+          color: #b2c0db;
+          font-size: 25px;
         }
-        .top-right {
-          color: #fff;
+        .count {
+          font-size: 70px;
           font-weight: 700;
-          font-size: 40px;
-          margin: 20px 0 0 auto;
-          .weather {
-            font-size: 30px;
-            text-align: right;
-            span {
-              margin-left: 10px;
-              &:last-child {
-                font-size: 15px;
-                margin-left: 5px;
-              }
+          margin-top: -20px;
+        }
+      }
+      .top-right {
+        color: #fff;
+        font-weight: 700;
+        font-size: 40px;
+        margin: 20px 0 0 auto;
+        .weather {
+          font-size: 30px;
+          text-align: right;
+          span {
+            margin-left: 10px;
+            &:last-child {
+              font-size: 15px;
+              margin-left: 5px;
             }
           }
         }
       }
-      .content {
-        display: flex;
-        .map {
-          flex: 1;
-        }
-        .cotent-right {
-          margin-left: auto;
-        }
+    }
+    .content {
+      display: flex;
+      .map {
+        flex: 1;
+      }
+      .cotent-right {
+        margin-left: auto;
       }
     }
   }

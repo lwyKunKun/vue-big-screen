@@ -62,7 +62,6 @@ export default {
   },
   methods: {
     loginIn () {//登录
-      console.log(this.form, 'form');
       this.$refs.form.validate(valid => {
         if (valid) {
           if (this.form.username == "admin" && this.form.password == "123456") {
@@ -165,20 +164,6 @@ export default {
     }
   }
 
-  @-ms-keyframes cloud {
-    0% {
-      -ms-transform: translate(-50%, -50%);
-    }
-    40% {
-      opacity: 1;
-    }
-    60% {
-      opacity: 1;
-    }
-    100% {
-      -ms-transform: translate(-50%, -40%);
-    }
-  }
   @-moz-keyframes cloud {
     0% {
       -moz-transform: translate(-50%, -50%);

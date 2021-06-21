@@ -1,6 +1,7 @@
 const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
 const { resolve } = require('path')
 const path = require('path')
+
 module.exports = {
     publicPath: './',
     //打包位置
@@ -43,6 +44,14 @@ module.exports = {
     css: {
         extract: IS_PROD, // 是否使用css分离插件 ExtractTextPlugin
         sourceMap: !IS_PROD, // 开启 CSS source maps?
+        loaderOptions: {
+            postcss: {
+                plugins: [
+                    // 根标签字号大小根据设计稿宽度/flexible.js里的份数得到，这里假定设计稿宽度为1920 1920/24 = 80px
+                    require('postcss-px2rem')({ remUnit: 80 }), // 换算的基数
+                ],
+            },
+        },
     },
     configureWebpack: {
         resolve: {

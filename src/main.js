@@ -11,6 +11,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import echarts from 'echarts'
 import '@/assets/css/home.scss'
+
+import '@/assets/js/flexible.js' //大屏适配js
 Vue.prototype.$echarts = echarts
 
 Vue.use(ElementUI)

@@ -4,6 +4,23 @@
   </div>
 </template>
 
+
+<script>
+export default {
+  name: 'App',
+  data () {
+    return {
+
+    }
+  },
+  mounted () {
+  }
+}
+
+</script>
+
+
+
 <style lang="scss">
 #app {
   width: 100%;
