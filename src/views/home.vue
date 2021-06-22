@@ -30,7 +30,9 @@
             <titlesTemplate title="媒体曝光分布"></titlesTemplate>
             <media></media>
           </div>
-          <div class="map">这是中间地图</div>
+          <div class="map">
+            <mapTitle></mapTitle>
+          </div>
           <div class="cotent-right">
             <titlesTemplate title="指数" :isTabBtn="true" :tabNameList="tabNameList" @mouseOver="mouseOver"></titlesTemplate>
             <exponent></exponent>

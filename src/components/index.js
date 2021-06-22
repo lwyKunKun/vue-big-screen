@@ -1,7 +1,7 @@
 /*
  * 描述: 封装组件库
- * 作者: Jack Chen
- * 日期: 2020-04-18
+ * 作者: lwy
+ * 日期: 20201-6-17
  */
 
 import bgAnimation from './bgAnimation' // 登录界面背景图动画
@@ -10,6 +10,7 @@ import titlesTemplate from './title' //标题栏模板
 import media from './media' //媒体曝光分布图表
 import exponent from './exponent' //指数图表
 import business from './business' //业务板块舆情
+import mapTitle from './mapTitle' //整体舆情检测状态图
 
 const components = {
     bgAnimation,
@@ -18,6 +19,7 @@ const components = {
     media,
     exponent,
     business,
+    mapTitle,
 }
 
 const install = (Vue = {}) => {
