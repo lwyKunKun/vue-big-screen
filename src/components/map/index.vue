@@ -73,14 +73,15 @@ export default {
             emphasis: {//鼠标进入显示对应地名
               show: true,
               textStyle: {
-                color: '#fff'
+                color: '#fff',
+                fontSize: this.$fontSize(0.16)
               }
             }
           },
           roam: false,//是否鼠标进行缩放
           itemStyle: {
             normal: {
-              borderWidth: 1, // 地图边框宽度
+              borderWidth: this.$fontSize(0.01), // 地图边框宽度
               borderColor: '#3188C1', // 地图边框颜色
               areaColor: '#10407E' // 地图颜色
             },
@@ -89,7 +90,7 @@ export default {
               shadowOffsetX: 0,
               shadowOffsetY: 0,
               shadowBlur: 0,
-              borderWidth: 1,
+              borderWidth: this.$fontSize(0.01),
               shadowColor: '#fff'
             }
           }
@@ -107,7 +108,7 @@ export default {
           coordinateSystem: 'geo',
           color: "#e1ebe3",//点的颜色
           data: convertData(data),
-          symbolSize: 25,//点的大小
+          symbolSize: this.$fontSize(0.25),//点的大小
           symbol: "pin",//点的样式
           cursor: "pointer",//鼠标放上去的效果
           label: {
@@ -121,7 +122,7 @@ export default {
           itemStyle: {
             emphasis: {
               borderColor: '#5c8f6e',
-              borderWidth: 5
+              borderWidth: this.$fontSize(0.05)
             }
           },
           zoom: 1.2,
