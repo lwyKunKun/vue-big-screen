@@ -65,7 +65,7 @@ export default {
 
         },
         grid: {
-          left: '3%',
+          left: '2%',
           bottom: '10%',
           containLabel: true,//设置自适应画布大小状态为开，也可通过设置left左移实现相同效果。
         },
@@ -112,7 +112,7 @@ export default {
             name: '负面',
             type: 'bar',
             stack: '总量',//堆叠
-            // barWidth: 25,//柱图宽度
+            // barWidth: '10%',//柱图宽度
             barGap: '-50%',
             barCategoryGap: 50,
             label: {

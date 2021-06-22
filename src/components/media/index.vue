@@ -10,23 +10,51 @@
 </template>
 
 <script>
+import { resize } from '@/assets/js/utils'
 export default {
   name: 'media',
   components: {},
 
   data () {
     return {
-      option: {
+      chart: '',
+
+    };
+  },
+
+  mounted () {
+    this.init()
+    resize(this.init, this.chart);
+  },
+  activated () {
+    this.init()
+    resize(this.init, this.chart);
+  },
+  deactivated () {
+    this.init()
+    resize(this.init, this.chart);
+
+  },
+
+  computed: {},
+
+  methods: {
+    //绘制雷达图
+    init () {
+      let myChart = this.$echarts.init(document.getElementById('myChart'))
+      this.chart = myChart;
+      let option = {
         color: ['#60B8F1', '#5AE8F6', '#28D49F'],
         legend: {
           show: true,
           right: '1%',
           bottom: 0,
-          itemWidth: 25,
-          itemHeight: 5,
+          itemWidth: this.$fontSize(0.25),
+          itemHeight: this.$fontSize(0.05),
           orient: 'vertical',
           textStyle: {
-            color: '#fff'
+            color: '#fff',
+            fontSize: this.$fontSize(0.12)
           },
           data: [{ name: '网络媒体' }, '社交媒体', '传统媒体']
         },
@@ -37,6 +65,8 @@ export default {
           name: {
             textStyle: {
               color: '#fff',//雷达图外的字体颜色
+              fontSize: this.$fontSize(0.16),
+              fontWeight: 700
             }
           },
           axisLine: {//雷达图中间射线的颜色
@@ -54,7 +84,7 @@ export default {
           splitLine: {
             show: true,
             lineStyle: {
-              width: 1,
+              width: this.$fontSize(0.01),
               color: '#2E7DA7'//网格颜色
             }
           },
@@ -73,7 +103,7 @@ export default {
           symbol: 'circle',//拐点样式
           symbolSize: 6,//拐点大小
           areaStyle: {  //拐点颜色
-            width: 60,
+            width: this.$fontSize(0.6),
             opacity: 0.4,
           },
           emphasis: {
@@ -99,37 +129,9 @@ export default {
         }]
 
       }
-    };
-  },
 
-  mounted () {
-    this.getRadar()
-  },
-  activated () {
-    this.getRadar()
-  },
-  deactivated () {
-    this.getRadar()
-
-  },
-
-  computed: {},
-
-  methods: {
-    //绘制雷达图
-    getRadar () {
-      let myChart = this.$echarts.init(document.getElementById('myChart'))
-
-      myChart.setOption(this.option)
+      myChart.setOption(option)
     },
-    //监听
-    resize (option) {
-      const that = this;
-      window.addEventListener('resize', () => {
-        option.resize();
-        that.getRadar();
-      })
-    }
   }
 }
 
