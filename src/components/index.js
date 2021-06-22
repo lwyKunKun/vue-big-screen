@@ -11,6 +11,7 @@ import media from './media' //媒体曝光分布图表
 import exponent from './exponent' //指数图表
 import business from './business' //业务板块舆情
 import mapTitle from './mapTitle' //整体舆情检测状态图
+import chinaMap from './map' //中国地图
 
 const components = {
     bgAnimation,
@@ -20,6 +21,7 @@ const components = {
     exponent,
     business,
     mapTitle,
+    chinaMap,
 }
 
 const install = (Vue = {}) => {

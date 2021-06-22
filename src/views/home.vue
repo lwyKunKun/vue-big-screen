@@ -32,6 +32,7 @@
           </div>
           <div class="map">
             <mapTitle></mapTitle>
+            <chinaMap></chinaMap>
           </div>
           <div class="cotent-right">
             <titlesTemplate title="指数" :isTabBtn="true" :tabNameList="tabNameList" @mouseOver="mouseOver"></titlesTemplate>
