@@ -65,6 +65,7 @@ export default {
       this.$refs.form.validate(valid => {
         if (valid) {
           if (this.form.username == "admin" && this.form.password == "123456") {
+            window.sessionStorage.setItem('token', '123')
             this.$router.push({
               path: '/home'
             })
